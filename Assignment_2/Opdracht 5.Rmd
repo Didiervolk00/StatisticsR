@@ -1,0 +1,44 @@
+---
+title: "Assignment2_Opdracht5"
+author: "Didier Volk 0973139"
+date: "4-10-2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r opdracht5}
+lambda = 10
+
+x<-seq(0,10,by=1)
+z = pexp(x,lambda)
+u = mean(pexp(x,lambda))
+u
+#Tenzij je net aankomt dat de tram er is wacht je eigenlijk altijd gemiddeld 5 minuten
+#Dus gemiddeld komt er elke 5 minuten een tram
+
+#Aantal minuten wachten
+y = u*10/2
+y
+round(y)
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r plot, echo=FALSE}
+plot(z,names.arg = 0:10)
+lines(z)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

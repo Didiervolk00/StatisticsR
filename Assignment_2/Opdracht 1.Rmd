@@ -1,0 +1,45 @@
+---
+title: "Assignment_2"
+author: "Didier Volk 0973139"
+date: "4-10-2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r product}
+#Kans dat er 0 producten kapot zijn is
+dbinom(0, 25, 0.04)
+
+#Kans dat er 1 tot 5 producten kapot zijn is
+u <-seq(1,5,by = 1)
+sum(dbinom(u, 25, 0.04))
+
+par(mfrow=c(1,2))
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r producten, echo=FALSE}
+#Grafiek middels simulaties
+t=rbinom(100000, 25, 0.04)
+barplot(table(t)/length(t),main = "probabilty by simulation 100.000", ylab="probability", xlab="possible value", col = "blue")
+
+#Grafiek tekenen middels R function
+x <-seq(0,25,by = 1)
+z = pbinom(x,25, 0.04)
+barplot(z, names.arg = 0:25,main = "probabilty by r functions", ylab="probability", xlab="Possible values", col = "blue")
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

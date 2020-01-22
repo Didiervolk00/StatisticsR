@@ -1,0 +1,77 @@
+---
+title: "Opdracht_5"
+author: "Didier Volk 0973139"
+date: "17-9-2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r dice}
+#The dice funtion, that randomly choses a number between 1 and 6, and where you let the program know how many dices are used.
+one.dice <- function(){
+  dice <- sample(1:6, size = 3, replace = TRUE)
+  return(sum(dice))
+}
+
+#The windows of the plots, so I can fit in 4 graphs in 1 image.
+par(mfrow=c(2,2))
+
+#The define of the colors
+colors = c("red", "yellow", "green", "violet", "orange", "blue")
+
+#The code section of the plotting
+##The plot of the 10x
+#sims <- replicate(10, one.dice())
+#barplot(table(sims),main = "Roll 10 times with 3 dices",xlab = 'Possible value', ylab = 'Frequency',col=colors)
+
+##The plot of the 100x
+#sims <- replicate(100, one.dice())
+#plot(table(sims),main = "Roll 100 times with 3 dices",xlab = 'Possible value', ylab = 'Frequency',col=colors)
+#lines(table(sims), type='o')
+
+##The plot of the 1000x
+#sims <- replicate(1000, one.dice())
+#plot(table(sims),main = "Roll 1000 times with 3 dices",xlab = 'Possible value', ylab = 'Frequency',col=colors)
+#lines(table(sims), type='o')
+
+##The plot of the 10000x
+#sims <- replicate(1000, one.dice())
+#plot(table(sims),main = "Roll 10000 times with 3 dices",xlab = 'Possible value', ylab = 'Frequency',col=colors)
+#lines(table(sims), type='o')
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r plot, echo=FALSE}
+#The plot of the 10x
+sims <- replicate(10, one.dice())
+barplot(table(sims),main = "Roll 10 times with 3 dices",xlab = 'Possible value', ylab = 'Frequency',col=colors)
+
+#The plot of the 100x
+sims <- replicate(100, one.dice())
+plot(table(sims),main = "Roll 100 times with 3 dices",xlab = 'Possible value', ylab = 'Frequency',col=colors)
+lines(table(sims), type='o')
+
+#The plot of the 1000x
+sims <- replicate(1000, one.dice())
+plot(table(sims),main = "Roll 1000 times with 3 dices",xlab = 'Possible value', ylab = 'Frequency',col=colors)
+lines(table(sims), type='o')
+
+#The plot of the 10000x
+sims <- replicate(1000, one.dice())
+plot(table(sims),main = "Roll 10000 times with 3 dices",xlab = 'Possible value', ylab = 'Frequency',col=colors)
+lines(table(sims), type='o')
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
